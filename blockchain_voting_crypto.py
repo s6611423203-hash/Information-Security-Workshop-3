@@ -543,7 +543,9 @@ class SecureVotingDatabase:
         )
         return report
 
-    def decrypt_ballot_choice(self, ballot_id: str) -> str | None:
+    from typing import Optional
+
+    def decrypt_ballot_choice(self, ballot_id: str) -> Optional[str]:
         """ถอดรหัสทางเลือกจาก ballot (สำหรับการนับคะแนนที่ได้รับอนุญาต)"""
         con = sqlite3.connect(self.db_path)
         row = con.execute(

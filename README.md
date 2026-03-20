@@ -1,17 +1,26 @@
 # Blockchain Voting System — Cryptographic Security Module
-**Assignment 3: Phase 2 | Kiattisak Buasorn | 6611423203**
+**Workshop 3: Designing Operational System Security | Kiattisak Buasorn | 6611423203**
 
-## Overview
-Python implementation of a cryptographically secure ballot storage system for a Blockchain-based voting platform.
+## ภาพรวมระบบ
 
-## Cryptographic Stack
-| Component | Algorithm | Standard |
+โปรเจคนี้เป็นระบบโหวต (Voting System) ที่เน้นความปลอดภัยสูง โดยใช้เทคนิคทาง Cryptography เพื่อป้องกัน:
+
+การปลอมแปลงข้อมูล
+
+การแก้ไขข้อมูลย้อนหลัง
+
+การเข้าถึงข้อมูลส่วนตัว
+
+ข้อมูลสำคัญ เช่น ชื่อ, เลขบัตรประชาชน และผลโหวต จะถูกเข้ารหัสทั้งหมดก่อนเก็บลงฐานข้อมูล
+
+## เทคโนโลยีที่ใช้ (Cryptographic Stack)
+| ส่วน | อัลกอริทึม | หน้าที่ |
 |-----------|-----------|----------|
-| Data Encryption | AES-256-GCM (AEAD) | NIST SP 800-38D |
-| Digital Signature | ECDSA P-256 | FIPS 186-4 |
-| Password Hashing | PBKDF2-HMAC-SHA256 (100,000 iter) | NIST SP 800-132 |
-| Key Derivation | PBKDF2-HMAC-SHA256 (310,000 iter) | Student-ID Seeded |
-| Integrity Check | HMAC-SHA256 per DB row | RFC 2104 |
+| เข้ารหัสข้อมูล | AES-256-GCM (AEAD) | ป้องกันข้อมูลรั่วไหล |
+| ลายเซ็นดิจิทัล | ECDSA P-256 | ยืนยันตัวตนผู้โหวต |
+|รหัสผ่าน | PBKDF2-HMAC-SHA256 (100,000 iter) | ป้องกันการเดารหัส |
+| สร้างกุญแจ | PBKDF2-HMAC-SHA256 (310,000 iter) | ทำให้แต่ละคนได้ key ไม่เหมือนกัน |
+| ตรวจสอบข้อมูล | HMAC-SHA256 per DB row |ป้องกันข้อมูลถูกแก้ |
 
 ## Student Fingerprint
 ```
@@ -22,8 +31,8 @@ ensuring every student produces unique ciphertext.
 
 ## Setup
 ```bash
-pip install -r requirements.txt
-python blockchain_voting_crypto.py
+pip3 install -r requirements.txt
+python3 blockchain_voting_crypto.py
 ```
 
 ## Module Structure
